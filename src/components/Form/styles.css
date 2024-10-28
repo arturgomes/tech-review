@@ -1,0 +1,32 @@
+/* Block */
+.form {
+  max-width: 400px;
+}
+
+/* Elements */
+.form__group {
+  margin-bottom: 20px;
+}
+
+.form__label {
+  font-weight: bold;
+}
+
+.form__input {
+  width: 100%;
+  padding: 8px;
+  border: 3px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Modifier */
+.form__input--error {
+  border-color: red;
+
+}
+
+.form__error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
