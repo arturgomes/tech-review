@@ -24,6 +24,7 @@ const Form: React.FC = () => {
   };
 
   return (
+    <div className="card__wrapper">
     <form className="form" onSubmit={handleSubmit}>
       <div className="form__group">
         <label htmlFor="name" className="form__label">Name</label>
@@ -51,6 +52,8 @@ const Form: React.FC = () => {
       
       <button type="submit" className="form__button form__button--primary">Submit</button>
     </form>
+    </div>
+
   );
 }
 
