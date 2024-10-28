@@ -1,0 +1,51 @@
+/* Block */
+.card__wrapper{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+  height: 100vh;
+}
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0px;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card__container{
+  padding: 8px;
+}
+/* Elements */
+.card__image {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.card__title {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.card__description {
+  font-size: 14px;
+  color: #666;
+}
+
+.card__footer {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+}
+
+/* Modifier for Button Element */
+.card__button {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.card__button--primary {
+  background-color: #28a745;
+  color: #fff;
+}
