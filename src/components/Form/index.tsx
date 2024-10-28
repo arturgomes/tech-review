@@ -1,60 +1,62 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import useForm from '../../hooks/useForm';
 import './styles.css';
 
 const Form: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [errors, setErrors] = useState({ name: false, email: false });
+  const { values, errors, handleChange, validate, clearForm } = useForm({ name: '', email: '' });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Simulates 2 seconds of loading time
+
+    return () => clearTimeout(timeoutId);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Validate fields
-    const newErrors = {
-      name: name.trim() === '',
-      email: email.trim() === ''
-    };
-    setErrors(newErrors);
-
-    // Proceed only if there are no errors
-    if (!newErrors.name && !newErrors.email) {
-      // Form submission logic goes here
+    if (validate()) {
       alert('Form submitted successfully!');
+      clearForm(); // Clear form fields after successful submission
     }
   };
 
-  return (
-    <div className="card__wrapper">
-    <form className="form" onSubmit={handleSubmit}>
-      <div className="form__group">
-        <label htmlFor="name" className="form__label">Name</label>
-        <input
-          type="text"
-          id="name"
-          className={`form__input ${errors.name ? 'form__input--error' : ''}`}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        {errors.name && <p className="form__error">This field is required.</p>}
-      </div>
-      
-      <div className="form__group">
-        <label htmlFor="email" className="form__label">Email</label>
-        <input
-          type="email"
-          id="email"
-          className={`form__input ${errors.email ? 'form__input--error' : ''}`}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        {errors.email && <p className="form__error">This field is required.</p>}
-      </div>
-      
-      <button type="submit" className="form__button form__button--primary">Submit</button>
-    </form>
-    </div>
+  if (loading) return <p>Loading form...</p>;
 
+  return (
+    <div className="form__wrapper">
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form__group">
+          <label htmlFor="name" className="form__label">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            className={`form__input ${errors.name ? 'form__input--error' : ''}`}
+            value={values.name}
+            onChange={handleChange}
+          />
+          {errors.name && <p className="form__error">This field is required.</p>}
+        </div>
+        
+        <div className="form__group">
+          <label htmlFor="email" className="form__label">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className={`form__input ${errors.email ? 'form__input--error' : ''}`}
+            value={values.email}
+            onChange={handleChange}
+          />
+          {errors.email && <p className="form__error">This field is required.</p>}
+        </div>
+        
+        <button type="submit" className="form__button form__button--primary">Submit</button>
+      </form>
+    </div>
   );
-}
+};
 
 export default Form;
