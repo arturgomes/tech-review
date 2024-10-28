@@ -4,7 +4,6 @@
   flex-direction:column;
   justify-content: center;
   align-items:center;
-  height: 100vh;
 }
 .card {
   border: 1px solid #ddd;
@@ -15,6 +14,9 @@
 }
 .card__container{
   padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /* Elements */
 .card__image {
