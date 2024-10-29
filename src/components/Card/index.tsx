@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button";
+import ButtonGroup from "../ButtonGroup";
 import "./styles.css";
 
 interface CardProps {
@@ -21,7 +21,7 @@ const Card: React.FC<CardProps> = ({ title, description, img }) => {
           <h2 className="card__title">{title}</h2>
           <p className="card__description">{description}</p>
           <div className="card__footer">
-            <Button />
+            <ButtonGroup />
           </div>
         </div>
       </div>
