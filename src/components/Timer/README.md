@@ -1,4 +1,4 @@
-# Timer Component
+# Timer Life Cycle Documentation
 
 The `Timer` component is a React functional component that demonstrates the use of **multiple `useEffect` hooks** to handle different phases of the component lifecycle: mounting, updating with a timer, and unmounting.
 
