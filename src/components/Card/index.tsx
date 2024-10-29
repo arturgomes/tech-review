@@ -1,6 +1,7 @@
 import React from "react";
 import ButtonGroup from "../ButtonGroup";
 import "./styles.css";
+import Counter from "../Counter";
 
 interface CardProps {
   title: string;
@@ -20,6 +21,7 @@ const Card: React.FC<CardProps> = ({ title, description, img }) => {
         <div className="card__container">
           <h2 className="card__title">{title}</h2>
           <p className="card__description">{description}</p>
+            <Counter />
           <div className="card__footer">
             <ButtonGroup />
           </div>
