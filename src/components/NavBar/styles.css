@@ -1,8 +1,12 @@
 /* Block */
 .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #333;
   padding: 10px;
-  width: 100%;
+  color: white;
+  height: 48px;
 }
 
 /* Element */
@@ -21,9 +25,25 @@
   color: #fff;
   text-decoration: none;
 }
+.nav__controls {
+  display: flex;
+  align-items: center;
+}
 
 /* Modifier */
 .nav__item--active .nav__link {
   font-weight: bold;
   color: #ff0;
+}
+
+
+/* Timer styling */
+.nav__timer {
+  display: flex;
+  align-items: center;
+}
+
+.timer {
+  color: white;
+  font-size: 14px;
 }
