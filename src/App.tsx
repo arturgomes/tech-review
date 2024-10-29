@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import NavBar from "./components/NavBar";
 import "./App.css";
 import Button from "./components/ButtonGroup/Button";
+import { CounterProvider } from "./context/CounterProvider";
 
 function App() {
   /**
@@ -18,7 +19,7 @@ function App() {
   }, [formOrCard]); // Dependency array to log only when formOrCard changes
 
   return (
-    <>
+    <CounterProvider>
       <NavBar />
       <div className="app__wrapper">
         <Button onClick={() => setFormOrCard(!formOrCard)}>
@@ -34,7 +35,7 @@ function App() {
           />
         )}
       </div>
-    </>
+    </CounterProvider>
   );
 }
 
