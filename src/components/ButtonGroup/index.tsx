@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
+import Button from './Button'
 import './styles.css';
 
 
-const Button: React.FC = () => {
+const ButtonGroup: React.FC = () => {
   // This function handles the click event for the primary button.
   // It logs a message to the console and stops the event from propagating further up the DOM.
   const handlePrimaryButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -53,26 +54,26 @@ const Button: React.FC = () => {
   };
 
   return (
-    <div onClick={() => console.log("Container clicked")}>
+    <div className="button__group" onClick={() => console.log("Container clicked")}>
       {/* 
         The primary button has an onClick handler that prevents event bubbling.
         Clicking this button will trigger `handlePrimaryButtonClick`, log the message,
         and prevent the click event from reaching the `div` container.
       */}
-      <button className="button button--primary" onClick={handlePrimaryButtonClick}>
+      <Button variant="primary" onClick={handlePrimaryButtonClick}>
         Primary Button
-      </button>
+      </Button>
 
       {/* 
         The secondary button has an onClick handler that does not stop propagation.
         Clicking this button will trigger `handleSecondaryButtonClick` and also
         propagate the click event to the `div` container, logging both messages.
       */}
-      <button className="button button--secondary" onClick={handleSecondaryButtonClick}>
+      <Button variant="secondary" onClick={handleSecondaryButtonClick}>
         Secondary Button
-      </button>
+      </Button>
     </div>
   );
 };
 
-export default Button;
+export default ButtonGroup;
