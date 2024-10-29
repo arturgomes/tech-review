@@ -1,34 +1,44 @@
 import React, { useEffect, useState } from "react";
+import Button from "../ButtonGroup/Button";
 
 const Timer: React.FC = () => {
   const [time, setTime] = useState(0);
 
-  // useEffect to handle the component mounting logic
+  // Log when the component mounts
   useEffect(() => {
     console.log("Timer component has mounted.");
-  }, []); // This runs only once, like componentDidMount
+  }, []); // Runs only once, like componentDidMount
 
-  // useEffect to handle the interval timer logic
+  // Increment the timer every second
   useEffect(() => {
-    // Start a timer that increments the time every second
     const timer = setInterval(() => {
       setTime((prevTime) => prevTime + 1);
     }, 1000);
 
-    // Return a cleanup function to clear the interval
-    return () => clearInterval(timer);
-  }, []); // Also runs only once on mount, and clears on unmount
-
-  // useEffect to handle the component unmounting logic
-  useEffect(() => {
+    // Cleanup function to clear the interval on unmount
     return () => {
+      clearInterval(timer);
       console.log("Timer component is unmounting, cleanup complete.");
     };
-  }, []); // Runs only when the component unmounts
+  }, []); // Runs once on mount, and clears on unmount
+
+  // Log whenever the time state changes (component updates)
+  useEffect(() => {
+    console.log(`Timer updated: time is now ${time}`);
+  }, [time]); // Runs every time `time` changes, demonstrating component updates
+
+  // Function to reset the timer
+  const handleReset = () => {
+    setTime(0);
+    console.log("Timer reset to 0");
+  };
 
   return (
-    <div>
+    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
       <h2>Elapsed Time: {time} seconds</h2>
+      <Button onClick={handleReset}>
+        Reset Timer
+      </Button>
     </div>
   );
 };
