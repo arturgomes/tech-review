@@ -3,6 +3,8 @@ import { useCounter } from '../../hooks/useCounter';
 
 const Counter: React.FC = () => {
   const { state, dispatch } = useCounter();
+  
+  // useRef: will be used to work on the input field (to put into focus when reset)
   const inputRef = useRef<HTMLInputElement>(null);
 
   // useMemo: Memoize the calculation of the double count to optimize performance.
