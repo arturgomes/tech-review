@@ -3,6 +3,7 @@ import Card from "./components/Card";
 import Form from "./components/Form";
 import NavBar from "./components/NavBar";
 import "./App.css";
+import Button from "./components/ButtonGroup/Button";
 
 function App() {
   /**
@@ -20,9 +21,9 @@ function App() {
     <>
       <NavBar />
       <div className="app__wrapper">
-        <button className="button" onClick={() => setFormOrCard(!formOrCard)}>
+        <Button onClick={() => setFormOrCard(!formOrCard)}>
           Switch to {formOrCard ? "Card" : "Form"}
-        </button>
+        </Button>
         {formOrCard ? (
           <Form />
         ) : (
